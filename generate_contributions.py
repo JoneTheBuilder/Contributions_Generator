@@ -75,6 +75,11 @@ def main():
 
     os.system("git push -u origin main")
 
+    # Clean up temporary file
+    try:
+        os.remove("file.txt")
+    except OSError as e:
+        print(f"Error deleting file: {e}")
 
 if __name__ == "__main__":
     try:
