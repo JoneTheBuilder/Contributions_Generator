@@ -5,15 +5,43 @@ import string
 import sys
 import os
 
+
 def daterange(start_date, end_date):
+    """
+    Generate a range of dates between start_date and end_date.
+
+    Args:
+        start_date (datetime.date): The start date.
+        end_date (datetime.date): The end date.
+
+    Yields:
+        datetime.date: The dates in the range.
+    """
     for n in range(int((end_date - start_date).days) + 1):
         yield start_date + timedelta(n)
 
+
 def get_random_string(length=8):
+    """
+    Generate a random string of lowercase letters.
+
+    Args:
+        length (int): Length of the generated string. Default is 8.
+
+    Returns:
+        str: A random string of lowercase letters.
+    """
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for _ in range(length))
 
+
 def main():
+    """
+    Generate Git contributions based on command-line arguments.
+
+    This script generates Git contributions with random commit messages
+    on specified dates between a start and end date provided as command-line arguments.
+    """
     if len(sys.argv) != 7:
         print("Usage: python3 generate_contributions.py <start_year> <start_month> <start_day> <end_year> <end_month> <end_day>")
         return
@@ -46,6 +74,7 @@ def main():
             os.system(f'GIT_COMMITTER_DATE="{formatted_date}" git commit -m "{commit_message}" --date="{formatted_date}"')
 
     os.system("git push -u origin main")
+
 
 if __name__ == "__main__":
     try:
