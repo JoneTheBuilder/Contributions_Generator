@@ -1,8 +1,12 @@
-# Contributions_Generator
-Simple python script that generates contributions on the dates that you specify.
+# Contributions Generator
 
-# Run the script in your CLI with python, and input the dates as shown in the examples below
+A simple Python script that generates Git contributions on specified dates.
 
-Example: "python3 cont_gen.py 2022 1 1 2022 2 1"
+## Usage
 
-Example_2: "python3 cont_gen.py {year} {month} {day} {year} {month} {day}"
+Run the script in your command-line interface (CLI) with Python, and input the start and end dates as shown in the examples below.
+
+### Examples
+
+```sh
+python3 generate_contributions.py {start_year} {start_month} {start_day} {end_year} {end_month} {end_day}
