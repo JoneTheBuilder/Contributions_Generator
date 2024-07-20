@@ -65,7 +65,7 @@ def main():
         return
 
     for single_date in daterange(start_date, end_date):
-        for _ in range(3, randint(10, 100)):
+        for _ in range(3, randint(10, 20)):
             commit_message = get_random_string()
             with open("file.txt", "a") as file:
                 file.write(commit_message + "\n")
