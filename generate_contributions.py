@@ -71,7 +71,11 @@ def main():
                 file.write(commit_message + "\n")
             os.system("git add .")
             formatted_date = single_date.strftime("%a %b %d %H:%M:%S %Y %z")
-            os.system(f'GIT_COMMITTER_DATE="{formatted_date}" git commit -m "{commit_message}" --date="{formatted_date}"')
+            if os.name == 'nt':  # Check if the OS is Windows
+                os.system(f'set GIT_COMMITTER_DATE="{formatted_date}" && git commit -m "{commit_message}" --date="{formatted_date}"')
+            else:  # For Unix-like systems
+                os.system(f'GIT_COMMITTER_DATE="{formatted_date}" git commit -m "{commit_message}" --date="{formatted_date}"')
+
 
     os.system("git push -u origin main")
 
